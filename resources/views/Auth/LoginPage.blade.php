@@ -56,11 +56,21 @@ tailwind.config = {
       <h1 class="text-2xl font-bold tracking-tight">Selamat Datang!</h1>
       <p class="mt-1 text-[11px] text-ink-500">Satu pintu masuk untuk Pelanggan, Mitra Jasa, &amp; Admin.</p>
 
-      <form action="#" method="POST" class="mt-5 space-y-4">
+      <form action="{{ route('login.post') }}" method="POST" class="mt-5 space-y-4">
+        @csrf
+        @if ($errors->any())
+            <div class="rounded-lg bg-red-100 p-3 text-[11px] text-red-700">
+                <ul class="list-disc pl-5">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div>
-          <label for="identifier" class="mb-2 block text-[11px] font-bold">Email atau Nomor HP</label>
-          <input id="identifier" name="identifier" type="text" autocomplete="username" required
-                 placeholder="contoh@email.com atau 08123xxx"
+          <label for="email" class="mb-2 block text-[11px] font-bold">Email</label>
+          <input id="email" name="email" type="text" autocomplete="username" required
+                 placeholder="contoh@example.com"
                  class="h-10 w-full rounded-xl border border-slate-200 bg-white px-3 text-[11px] placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20">
         </div>
 

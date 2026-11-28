@@ -94,7 +94,7 @@ tailwind.config = {
     </div>
 
         <div class="relative mx-auto aspect-[4/3.4] w-full max-w-sm overflow-hidden rounded-3xl bg-brand-100 shadow-2xl shadow-slate-400/30 lg:ml-auto lg:mr-0 lg:aspect-[9/10] lg:max-w-[392px]">
-        <img src="{{ asset('assets/Container.svg') }}" alt="Teknisi sedang melakukan perbaikan AC di rumah pelanggan" width="900" height="1000" fetchpriority="high" decoding="async" class="absolute inset-0 h-full w-full object-cover object-[50%_25%]">
+        <img src="{{ asset('assets/OrangTeknisi.jpeg') }}" alt="Teknisi sedang melakukan perbaikan AC di rumah pelanggan" width="900" height="1000" fetchpriority="high" decoding="async" class="absolute inset-0 h-full w-full object-cover object-[50%_25%]">
         </div>
   </div>
 </section>
@@ -273,7 +273,6 @@ tailwind.config = {
         <ul class="mt-4 space-y-2.5 text-xs text-slate-400">
           <li>support@sipjasa.id</li>
           <li>+62 (021) 8089-2345</li>
-          <li class="text-[11px] text-slate-500">PT Solusi Inovasi Pemukiman, Jakarta Pusat</li>
         </ul>
         <div class="mt-4 flex gap-2">
           <a href="mailto:support@sipjasa.id" aria-label="Email" class="grid h-8 w-8 place-items-center rounded-full bg-white/10 hover:bg-white/20">
@@ -282,19 +281,9 @@ tailwind.config = {
           <a href="tel:+62180892345" aria-label="Telepon" class="grid h-8 w-8 place-items-center rounded-full bg-white/10 hover:bg-white/20">
             <svg style="height:14px;width:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
           </a>
-          <a href="#" aria-label="Keamanan" class="grid h-8 w-8 place-items-center rounded-full bg-white/10 hover:bg-white/20">
-            <svg style="height:14px;width:14px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V5l8-3 8 3z"/></svg>
-          </a>
         </div>
       </div>
     </div>
-    <div class="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-[11px] text-slate-500 md:flex-row md:items-center md:justify-between">
-      <p>© 2025 SIP Jasa (Sistem Informasi Pemesanan Jasa Rumah Tangga). Hak cipta dilindungi.</p>
-      <div class="flex flex-wrap gap-x-6 gap-y-2">
-        <a href="#" class="hover:text-white">Kebijakan Privasi</a>
-        <a href="#" class="hover:text-white">Syarat &amp; Ketentuan</a>
-        <a href="#" class="hover:text-white">Standar Mutu &amp; Keamanan</a>
-      </div>
     </div>
   </div>
 </footer>

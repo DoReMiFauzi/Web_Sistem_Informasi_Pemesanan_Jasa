@@ -65,7 +65,18 @@ tailwind.config = {
       <h1 class="text-[32px] font-bold leading-tight tracking-tight">Buat Akun Pelanggan</h1>
       <p class="mt-2 max-w-[18rem] text-sm leading-snug text-ink-500">Daftar dalam satu menit untuk memesan layanan rumah tangga terpercaya.</p>
 
-      <form action="#" method="POST" class="mt-6">
+      <form action="{{ route('register.user.post') }}" method="POST" class="mt-6">
+        @csrf
+        @if ($errors->any())
+            <div class="mb-4 rounded-lg bg-red-100 p-4 text-sm text-red-700">
+                <ul class="list-disc pl-5">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div>
           <label for="name" class="mb-1.5 block text-[13px] font-medium">Nama lengkap</label>
           <input id="name" name="name" type="text" autocomplete="name" required placeholder="Nama sesuai KTP"
@@ -79,8 +90,8 @@ tailwind.config = {
                    class="h-10 w-full rounded-lg border border-slate-200 bg-white px-3 text-[13px] placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/25">
           </div>
           <div>
-            <label for="phone" class="mb-1.5 block text-[13px] font-medium">Nomor WhatsApp</label>
-            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="0812 3456 7890"
+            <label for="no_telp" class="mb-1.5 block text-[13px] font-medium">Nomor WhatsApp</label>
+            <input id="no_telp" name="no_telp" type="tel" inputmode="tel" autocomplete="tel" required placeholder="0812 3456 7890"
                    class="h-10 w-full rounded-lg border border-slate-200 bg-white px-3 text-[13px] placeholder:text-ink-400 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/25">
           </div>
         </div>

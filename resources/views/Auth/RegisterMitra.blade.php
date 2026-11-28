@@ -42,9 +42,9 @@ tailwind.config = {
       <a href="#" class="absolute left-6 top-6 text-2xl font-bold tracking-tight text-white drop-shadow">SIP JASA</a>
 
       <div class="absolute inset-x-0 bottom-0 px-6 pb-6 text-white">
-        <h2 id="slide-title" class="max-w-[19rem] text-[26px] font-bold leading-[1.15]" aria-live="polite"></h2>
-        <p id="slide-text" class="mt-3 max-w-sm text-xs leading-relaxed text-white/75"></p>
-
+        <h2 id="slide-title" class="max-w-[19rem] text-[26px] font-bold leading-[1.15] text-white" aria-live="polite"></h2>
+        <p id="slide-text" class="mt-3 max-w-sm text-xs leading-relaxed text-white/80"></p>
+        
         <div class="mt-5 flex items-center gap-4">
           <div class="flex flex-1 gap-2" role="tablist" aria-label="Slide">
             <button type="button" class="bar h-1 w-full max-w-[72px] rounded-full bg-mitra-400 transition-colors" role="tab" aria-label="Slide 1"></button>
@@ -68,38 +68,38 @@ tailwind.config = {
       <h1 class="text-[30px] font-bold leading-tight tracking-tight">Daftar Akun Mitra Jasa</h1>
       <p class="mt-2 max-w-sm text-xs leading-relaxed text-ink-500">Lengkapi identitas usaha dan KTP untuk verifikasi Admin sebelum menerima pesanan.</p>
 
-      <form action="#" method="POST" enctype="multipart/form-data" class="mt-6">
+      <form action="{{ route('register.mitra.post') }}" method="POST" enctype="multipart/form-data" class="mt-6">
+        @csrf
+        @if ($errors->any())
+            <div class="rounded-lg bg-red-100 p-3 text-[11px] text-red-700">
+                <ul class="list-disc pl-5">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="grid gap-x-5 gap-y-4 sm:grid-cols-2">
 
           <div>
-            <label for="owner" class="mb-1.5 block text-xs font-medium">Nama lengkap pemilik</label>
+            <label for="nama_mitra" class="mb-1.5 block text-xs font-medium">Nama lengkap pemilik</label>
             <div class="relative">
-              <input id="owner" name="owner" type="text" autocomplete="name" required placeholder="Nama sesuai KTP"
+              <input id="nama_mitra" name="nama_mitra" type="text" autocomplete="name" required placeholder="Nama sesuai KTP"
                      class="h-10 w-full rounded-xl border border-slate-200 bg-white pl-3 pr-9 text-[13px] placeholder:text-ink-400 focus:border-mitra-500 focus:outline-none focus:ring-2 focus:ring-mitra-500/20">
-              <svg id="owner-ok" class="pointer-events-none absolute right-3 top-1/2 hidden h-4 w-4 -translate-y-1/2 text-mitra-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+              <svg id="nama_mitra-ok" class="pointer-events-none absolute right-3 top-1/2 hidden h-4 w-4 -translate-y-1/2 text-mitra-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
             </div>
           </div>
 
           <div>
-            <label for="business" class="mb-1.5 block text-xs font-medium">Nama usaha / toko</label>
-            <input id="business" name="business" type="text" required placeholder="Contoh: Maju Jaya AC"
+            <label for="nama_usaha" class="mb-1.5 block text-xs font-medium">Nama usaha / toko</label>
+            <input id="nama_usaha" name="nama_usaha" type="text" required placeholder="Contoh: Maju Jaya AC"
                    class="h-10 w-full rounded-xl border border-slate-200 bg-white px-3 text-[13px] placeholder:text-ink-400 focus:border-mitra-500 focus:outline-none focus:ring-2 focus:ring-mitra-500/20">
           </div>
 
-          <div>
-            <label for="category" class="mb-1.5 block text-xs font-medium">Kategori keahlian</label>
-            <select id="category" name="category" required
-                    class="h-10 w-full appearance-none rounded-xl border border-slate-200 bg-white bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%2364748b%22 stroke-width=%222.5%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22m6 9 6 6 6-6%22/></svg>')] bg-[length:14px] bg-[right_0.75rem_center] bg-no-repeat px-3 pr-9 text-[13px] focus:border-mitra-500 focus:outline-none focus:ring-2 focus:ring-mitra-500/20">
-              <option value="ac">Servis AC &amp; Elektronik</option>
-              <option value="listrik">Instalasi Listrik &amp; Pipa</option>
-              <option value="cleaning">Pembersihan Rumah (Cleaning)</option>
-              <option value="bangunan">Tukang Bangunan Harian</option>
-            </select>
-          </div>
 
           <div>
-            <label for="phone" class="mb-1.5 block text-xs font-medium">Nomor WhatsApp</label>
-            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="0813 xxxx xxxx"
+            <label for="no_telp" class="mb-1.5 block text-xs font-medium">Nomor WhatsApp</label>
+            <input id="no_telp" name="no_telp" type="tel" inputmode="tel" autocomplete="tel" required placeholder="0813 xxxx xxxx"
                    class="h-10 w-full rounded-xl border border-slate-200 bg-white px-3 text-[13px] placeholder:text-ink-400 focus:border-mitra-500 focus:outline-none focus:ring-2 focus:ring-mitra-500/20">
           </div>
 
@@ -108,14 +108,20 @@ tailwind.config = {
             <input id="email" name="email" type="email" autocomplete="email" required placeholder="nama@usaha.com"
                    class="h-10 w-full rounded-xl border border-slate-200 bg-white px-3 text-[13px] placeholder:text-ink-400 focus:border-mitra-500 focus:outline-none focus:ring-2 focus:ring-mitra-500/20">
           </div>
+          
+          <div>
+            <label for="NIK" class="mb-1.5 block text-xs font-medium">NIK</label>
+            <input id="NIK" name="NIK" type="text" autocomplete="NIK" required placeholder="1234567890123456"
+                   class="h-10 w-full rounded-xl border border-slate-200 bg-white px-3 text-[13px] placeholder:text-ink-400 focus:border-mitra-500 focus:outline-none focus:ring-2 focus:ring-mitra-500/20">
+          </div>
 
           <div>
             <span class="mb-1.5 block text-xs font-medium">Unggah foto KTP (Wajib)</span>
-            <input id="ktp" name="ktp" type="file" accept="image/*,.pdf" required class="peer sr-only">
-            <label for="ktp" id="ktp-box"
+            <input id="foto_ktp" name="foto_ktp" type="file" accept="image/*,.pdf" required class="peer sr-only">
+            <label for="foto_ktp" id="ktp-box"
                    class="flex h-10 cursor-pointer items-center gap-2 rounded-xl border border-dashed border-mitra-400 bg-mitra-50 px-3 text-[11px] text-mitra-700 transition peer-focus-visible:ring-2 peer-focus-visible:ring-mitra-500/40 hover:bg-emerald-100">
               <svg class="h-4 w-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-              <span id="ktp-name" class="truncate">Pilih file KTP (JPG/PNG/PDF)</span>
+              <span id="ktp-name" class="truncate">Pilih file KTP (JPG/PNG)</span>
               <span id="ktp-status" class="hidden shrink-0 text-[10px] text-mitra-600">• Siap diverifikasi</span>
             </label>
           </div>
@@ -149,16 +155,17 @@ tailwind.config = {
 </main>
 
 <script>
-  // Ikon centang pada nama pemilik
-  const owner = document.getElementById('owner');
-  const ownerOk = document.getElementById('owner-ok');
+// SESUDAH (BENAR)
+const owner = document.getElementById('nama_mitra');
+const ownerOk = document.getElementById('nama_mitra-ok');
+if (owner && ownerOk) {
   owner.addEventListener('input', () => ownerOk.classList.toggle('hidden', owner.value.trim() === ''));
-
+}
   // Nama file KTP + status
-  const ktp = document.getElementById('ktp');
+  const ktp = document.getElementById('foto_ktp');
   ktp.addEventListener('change', () => {
     const f = ktp.files[0];
-    document.getElementById('ktp-name').textContent = f ? f.name : 'Pilih file KTP (JPG/PNG/PDF)';
+    document.getElementById('ktp-name').textContent = f ? f.name : 'Pilih file KTP (JPG/PNG)';
     document.getElementById('ktp-status').classList.toggle('hidden', !f);
   });
 

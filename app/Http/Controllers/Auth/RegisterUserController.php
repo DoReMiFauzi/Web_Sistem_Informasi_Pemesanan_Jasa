@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterUserController extends Controller
 {
@@ -13,6 +16,27 @@ class RegisterUserController extends Controller
     public function index()
     {
         return view('Auth.RegisterUser');
+    }
+
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'no_telp' => ['required', 'string', 'max:255', 'unique:users', 'nullable'],
+            'password' => ['required', 'string', 'min:8'],
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'no_telp' => $request->no_telp,
+            'password' => Hash::make($request->password),
+            'role' => 'customer', // Otomatis set sebagai customer
+        ]);
+
+        
+        return redirect()->route('login')->with('success', 'Registrasi berhasil. Silakan login.');
     }
 
     /**
